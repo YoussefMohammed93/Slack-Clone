@@ -73,3 +73,7 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.auth-card {
+  box-shadow: 5px 5px 30px #ddd;
+}

@@ -47,7 +47,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
   };
 
   return (
-    <Card className="w-full h-full p-8">
+    <Card className="auth-card w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
         <CardTitle>Log in to continue</CardTitle>
         <CardDescription>
