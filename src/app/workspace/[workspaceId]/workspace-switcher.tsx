@@ -62,7 +62,6 @@ export const WorkspaceSwitcher = () => {
             <p className="truncate">{workspace.name}</p>
           </DropdownMenuItem>
         ))}
-        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setOpen(true)}>
           <div className="flex items-center justify-center relative overflow-hidden size-9 mr-2 rounded-md text-lg font-semibold text-black bg-[#DDD]">
             <Plus />
