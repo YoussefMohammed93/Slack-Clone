@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Loader, LogOut } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useCurrentUser } from "../api/user-current-user";
 
@@ -16,7 +16,7 @@ export const UserButton = () => {
   const { data, isLoading } = useCurrentUser();
 
   if (isLoading) {
-    return <Loader className="size-4 animate-spin text-muted-foreground" />;
+    return <Loader2 className="size-5 animate-spin text-white" />;
   }
 
   if (!data) {
@@ -31,8 +31,12 @@ export const UserButton = () => {
     <DropdownMenu>
       <DropdownMenuTrigger className="relative outline-none">
         <Avatar className="size-10">
-          <AvatarImage src={image} alt={name} className="object-cover" />
-          <AvatarFallback className="bg-blue-500 text-white">
+          <AvatarImage
+            src={image}
+            alt={name}
+            className="object-cover rounded-md"
+          />
+          <AvatarFallback className="rounded-md bg-sky-500 text-white">
             {avatarFallback}
           </AvatarFallback>
         </Avatar>

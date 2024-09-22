@@ -83,7 +83,7 @@ export const WorkspaceHeader = ({
           </Hint>
           <Hint label="New message" side="bottom">
             <Button variant="transparent" size="iconSm">
-              <SquarePen className="size-5" />
+              <SquarePen className="w-[18px] h-[18px]" />
             </Button>
           </Hint>
         </div>
