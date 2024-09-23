@@ -77,3 +77,7 @@ body,
 .auth-card {
   box-shadow: 5px 5px 30px #ddd;
 }
+
+:where(.vi__character--selected) {
+  outline: 2px solid #5b2c5e !important;
+}
