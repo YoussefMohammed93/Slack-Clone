@@ -19,7 +19,7 @@ import { useCreateChannelModal } from "@/features/channels/store/use-create-chan
 export const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId();
 
-  const [_open, setOpen] = useCreateChannelModal();
+  const [, setOpen] = useCreateChannelModal();
 
   const { data: member, isLoading: memberLoading } = UseCurrentMember({
     workspaceId,

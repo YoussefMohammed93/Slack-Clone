@@ -37,7 +37,10 @@ export const CreateChannelModal = () => {
       },
       {
         onSuccess: (id) => {
+          console.log(`Channel created with ID: ${id}`);
+
           //TODO: Redirect to new channel
+
           handleClose();
         },
       }
