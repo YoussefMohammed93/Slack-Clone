@@ -1,10 +1,10 @@
 import React from "react";
-import { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
 
 const sidebarItemVariants = cva(
   "flex items-center justify-start gap-1.5 overflow-hidden text-sm font-normal h-8 px-[18px] my-[2px]",
@@ -12,7 +12,7 @@ const sidebarItemVariants = cva(
     variants: {
       variant: {
         default: "text-[#f9edffcc]",
-        active: "text-[#481249] bg-white/90 hover:bg-white/90",
+        active: "text-[#f9edffcc] bg-white/10",
       },
     },
     defaultVariants: {

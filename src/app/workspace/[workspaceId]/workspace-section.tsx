@@ -23,13 +23,15 @@ export const WorkspaceSection = ({
   return (
     <div className="flex flex-col mt-3 px-2">
       <div className="flex items-center justify-between px-3.5 group">
-        <div className="flex items-center">
+        <div className="flex items-center mb-2">
           <Button
             variant="transparent"
             className="text-sm shrink-0 size-6 text-[#f9edffcc] p-0.5"
             onClick={toggle}
           >
-            <FaCaretDown className={cn("size-4 transition-transform", on && "-rotate-180")} />
+            <FaCaretDown
+              className={cn("size-4 transition-transform", on && "-rotate-180")}
+            />
           </Button>
           <Button
             variant="transparent"
