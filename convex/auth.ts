@@ -13,6 +13,11 @@ const CustomPassword = Password<DataModel>({
   },
 });
 
+const isProd = process.env.NODE_ENV === "production";
+const callbackUrl = isProd
+  ? "https://slack-clone-matrix.vercel.app/api/auth/callback/github"
+  : "http://localhost:3000/api/auth/callback/github";
+
 export const { auth, signIn, signOut, store } = convexAuth({
   providers: [
     GitHub({
@@ -20,8 +25,7 @@ export const { auth, signIn, signOut, store } = convexAuth({
       clientSecret: process.env.GITHUB_SECRET,
       authorization: {
         params: {
-          redirect_uri:
-            "https://slack-clone-matrix.vercel.app/api/auth/callback/github",
+          redirect_uri: callbackUrl,
         },
       },
     }),
