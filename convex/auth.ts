@@ -16,8 +16,14 @@ const CustomPassword = Password<DataModel>({
 export const { auth, signIn, signOut, store } = convexAuth({
   providers: [
     GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      authorization: {
+        params: {
+          redirect_uri:
+            "https://slack-clone-matrix.vercel.app/api/auth/callback/github",
+        },
+      },
     }),
     CustomPassword,
   ],
