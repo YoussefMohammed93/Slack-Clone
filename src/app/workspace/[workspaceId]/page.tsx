@@ -4,7 +4,7 @@ import { useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, TriangleAlert } from "lucide-react";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
-import { useGetChannels } from "@/features/channels/use-get-channel";
+import { useGetChannels } from "@/features/channels/use-get-channels";
 import { useGetWorkspace } from "@/features/workspaces/api/use-get-wokspace";
 import { UseCurrentMember } from "@/features/members/api/use-current-member";
 import { useCreateChannelModal } from "@/features/channels/store/use-create-channel-modal";
@@ -59,14 +59,14 @@ const WorkspaceIdPage = () => {
     isAdmin,
   ]);
 
-  if (workspaceLoading || channelsLoading) {
+  if (workspaceLoading || channelsLoading || memberLoading) {
     return (
       <div className="h-full flex flex-col flex-1 items-center justify-center gap-2">
         <Loader2 className="size-7 animate-spin text-muted-foreground" />
       </div>
     );
   }
-  if (!workspace) {
+  if (!workspace || !member) {
     return (
       <div className="h-full flex flex-col flex-1 items-center justify-center gap-2">
         <TriangleAlert className="size-7 text-destructive" />

@@ -4,7 +4,7 @@ import { WorkspaceHeader } from "./workspace-header";
 import { useChannelId } from "@/hooks/use-channel-id";
 import { WorkspaceSection } from "./workspace-section";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
-import { useGetChannels } from "@/features/channels/use-get-channel";
+import { useGetChannels } from "@/features/channels/use-get-channels";
 import { UseGetMembers } from "@/features/members/api/use-get-members";
 import { UseCurrentMember } from "@/features/members/api/use-current-member";
 import { useGetWorkspace } from "@/features/workspaces/api/use-get-wokspace";
