@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Slack",
-  description: "Slack clone by matrix",
+  title: "Slack Clone By Youssef Mohammed",
+  description: "Slack clone by youssef mohammed",
 };
 
 export default function RootLayout({
