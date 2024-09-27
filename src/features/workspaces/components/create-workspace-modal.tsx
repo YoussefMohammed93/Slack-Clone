@@ -1,16 +1,16 @@
-import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
-import React, { useState, useCallback } from "react";
-import { useCreateWorkspaceModal } from "../store/use-create-workspace-modal";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import React, { useState, useCallback } from "react";
 import { UseCreateWorkspace } from "../api/use-create-workspace";
+import { useCreateWorkspaceModal } from "../store/use-create-workspace-modal";
 
 export const CreateWorkspaceModal = () => {
   const router = useRouter();
@@ -32,7 +32,7 @@ export const CreateWorkspaceModal = () => {
         { name },
         {
           onSuccess(id) {
-            toast.success("Workspace created");
+            toast.success("Workspace created successfully!");
             router.push(`/workspace/${id}`);
             handleClose();
           },

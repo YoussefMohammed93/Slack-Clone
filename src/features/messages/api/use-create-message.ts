@@ -9,7 +9,7 @@ type RequestType = {
   workspaceId: Id<"workspaces">;
   channelId?: Id<"channels">;
   parentMessageId?: Id<"messages">;
-  // TODO : Add conervsationId
+  conversationId?: Id<"coversations">;
 };
 type ResponsetType = Id<"messages"> | null;
 
