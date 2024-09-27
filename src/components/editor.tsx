@@ -13,6 +13,7 @@ import { Delta, Op } from "quill/core";
 import { MdSend } from "react-icons/md";
 import { PiTextAa } from "react-icons/pi";
 import Quill, { QuillOptions } from "quill";
+import { EmojiPopover } from "./emoji-popover";
 import { ImageIcon, Smile } from "lucide-react";
 
 type EditorValue = {
@@ -28,6 +29,10 @@ interface EditorProps {
   defaultValue?: Delta | Op[];
   disabled?: boolean;
   innerRef?: MutableRefObject<Quill | null>;
+}
+
+interface Emoji {
+  native: string;
 }
 
 const Editor = ({
@@ -131,6 +136,12 @@ const Editor = ({
     }
   };
 
+  const onEmojiSelect = (emoji: Emoji) => {
+    const quill = quillRef.current;
+
+    quill?.insertText(quill?.getSelection()?.index || 0, emoji.native);
+  };
+
   const isEmpty = text.replace(/<(.|\n)*?>/g, "").trim().length === 0;
 
   return (
@@ -148,16 +159,11 @@ const Editor = ({
               <PiTextAa className="size-5" />
             </Button>
           </Hint>
-          <Hint label="Emoji">
-            <Button
-              disabled={disabled}
-              onClick={() => {}}
-              size="iconSm"
-              variant="ghost"
-            >
+          <EmojiPopover onEmojiSelect={onEmojiSelect}>
+            <Button disabled={disabled} size="iconSm" variant="ghost">
               <Smile className="size-5" />
             </Button>
-          </Hint>
+          </EmojiPopover>
           {variant === "create" && (
             <Hint label="Image">
               <Button
