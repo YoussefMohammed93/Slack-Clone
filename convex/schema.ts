@@ -22,11 +22,13 @@ const schema = defineSchema({
     name: v.string(),
     workspaceId: v.id("workspaces"),
   }).index("by_workspace_id", ["workspaceId"]),
-  coversations: defineTable({
+
+  conversations: defineTable({
     workspaceId: v.id("workspaces"),
     memberOneId: v.id("members"),
     memberTwoId: v.id("members"),
   }).index("by_workspace_id", ["workspaceId"]),
+
   messages: defineTable({
     body: v.string(),
     image: v.optional(v.id("_storage")),
@@ -34,16 +36,17 @@ const schema = defineSchema({
     workspaceId: v.id("workspaces"),
     channelId: v.optional(v.id("channels")),
     parentMessageId: v.optional(v.id("messages")),
-    updatedAt: v.number(),
-    coversationId: v.optional(v.id("coversations")),
+    updatedAt: v.optional(v.number()),
+    conversationId: v.optional(v.id("conversations")),
   })
     .index("by_workspace_id", ["workspaceId"])
     .index("by_member_id", ["memberId"])
-    .index("by_coversation_id", ["coversationId"])
+    .index("by_conversationId_id", ["conversationId"])
+    .index("by_parent_message_id", ["parentMessageId"])
     .index("by_channel_id_parent_message_id_conversation_id", [
       "channelId",
       "parentMessageId",
-      "coversationId",
+      "conversationId",
     ]),
 
   reactions: defineTable({
