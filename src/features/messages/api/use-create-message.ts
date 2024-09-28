@@ -9,8 +9,9 @@ type RequestType = {
   workspaceId: Id<"workspaces">;
   channelId?: Id<"channels">;
   parentMessageId?: Id<"messages">;
-  conversationId?: Id<"coversations">;
+  conversationId?: Id<"conversations">;
 };
+
 type ResponsetType = Id<"messages"> | null;
 
 type Options = {
