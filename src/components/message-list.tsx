@@ -1,3 +1,4 @@
+// MessageList.tsx
 import { useState } from "react";
 import { Message } from "./message";
 import { Loader2 } from "lucide-react";
@@ -32,8 +33,6 @@ const formatDateLabel = (dateStr: string) => {
 };
 
 export const MessageList = ({
-  // memberName,
-  // memberImage,
   channelName,
   loadMore,
   canLoadMore,
@@ -64,6 +63,9 @@ export const MessageList = ({
     },
     {} as Record<string, typeof data>
   );
+
+  // Log the channelCreationTime to understand the value being passed
+  console.log("MessageList - channelCreationTime:", channelCreationTime);
 
   return (
     <div className="messages-scrollbar flex flex-1 flex-col-reverse overflow-y-auto messages-scrollbar">
@@ -139,7 +141,10 @@ export const MessageList = ({
         </div>
       )}
       {variant === "channel" && channelName && channelCreationTime && (
-        <ChannelHero name={channelName} creationTime={channelCreationTime} />
+        <ChannelHero
+          name={channelName}
+          creationTime={Number(channelCreationTime)}
+        />
       )}
     </div>
   );
