@@ -1,21 +1,24 @@
 "use client";
 
-import { Sidebar } from "./sidebar";
-import { Toolbar } from "./toolbar";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { WorkspaceSidebar } from "./workspace-sidebar";
+import { Sidebar } from "./sidebar";
+import { Toolbar } from "./toolbar";
+import { Loader2 } from "lucide-react";
 import { usePanel } from "@/hooks/use-panel";
+import { WorkspaceSidebar } from "./workspace-sidebar";
+import { Id } from "../../../../convex/_generated/dataModel";
+import { Thread } from "@/features/messages/components/thread";
 
 interface WorkspaceIdLayoutProps {
   children: React.ReactNode;
 }
 
 const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
-  const { parentMessageId } = usePanel();
+  const { parentMessageId, onClose } = usePanel();
 
   const showPanel = !!parentMessageId;
 
@@ -35,16 +38,25 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
           >
             <WorkspaceSidebar />
           </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel minSize={20}>{children}</ResizablePanel>
           {showPanel && (
             <>
               <ResizableHandle withHandle />
-              <ResizablePanel minSize={20} defaultSize={29}>
-                Load thread
+              <ResizablePanel minSize={20} defaultSize={20}>
+                {parentMessageId ? (
+                  <Thread
+                    onClose={onClose}
+                    messageId={parentMessageId as Id<"messages">}
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <Loader2 className="size-5 animate-spin text-muted-foreground" />
+                  </div>
+                )}
               </ResizablePanel>
             </>
           )}
-          <ResizableHandle withHandle />
-          <ResizablePanel minSize={20}>{children}</ResizablePanel>
         </ResizablePanelGroup>
       </div>
     </div>
