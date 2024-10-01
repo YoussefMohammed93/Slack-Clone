@@ -15,7 +15,7 @@ interface WorkspaceIdLayoutProps {
 }
 
 const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
-  const { parentMessageId, onClose } = usePanel();
+  const { parentMessageId } = usePanel();
 
   const showPanel = !!parentMessageId;
 
