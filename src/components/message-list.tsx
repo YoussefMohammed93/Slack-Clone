@@ -1,4 +1,3 @@
-// MessageList.tsx
 import { useState } from "react";
 import { Message } from "./message";
 import { Loader2 } from "lucide-react";
@@ -64,11 +63,10 @@ export const MessageList = ({
     {} as Record<string, typeof data>
   );
 
-  // Log the channelCreationTime to understand the value being passed
   console.log("MessageList - channelCreationTime:", channelCreationTime);
 
   return (
-    <div className="messages-scrollbar flex flex-1 flex-col-reverse overflow-y-auto messages-scrollbar">
+    <div className="messages-scrollbar flex flex-1 flex-col-reverse overflow-y-auto">
       {Object.entries(groupedMessages || {}).map(([dateKey, messages]) => (
         <div key={dateKey}>
           <div className="relative text-center my-3">
