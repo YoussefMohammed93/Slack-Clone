@@ -6,12 +6,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { InviteModal } from "./invite-modal";
+import { Button } from "@/components/ui/button";
 import { PreferencesModal } from "./preferences-modal";
-import { Doc } from "../../../../convex/_generated/dataModel";
 import { WorkspaceSwitcher } from "./workspace-switcher";
+import { Doc } from "../../../../convex/_generated/dataModel";
 
 interface WorkspaceHeaderProps {
   workspace: Doc<"workspaces">;
@@ -23,8 +23,8 @@ export const WorkspaceHeader = ({
   isAdmin,
 }: WorkspaceHeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [inviteOpen, setInviteOpen] = useState(false);
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
 
   return (
     <>
@@ -39,7 +39,7 @@ export const WorkspaceHeader = ({
         setOpen={setPreferencesOpen}
         initialValue={workspace.name}
       />
-      <div className="flex items-center justify-between px-4 h-[50px] gap-0.5">
+      <div className="flex items-center justify-between px-4 h-[60px] gap-0.5 border-b border-gray-300">
         <WorkspaceSwitcher />
         <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
           <DropdownMenuTrigger asChild>
@@ -58,7 +58,7 @@ export const WorkspaceHeader = ({
           </DropdownMenuTrigger>
           <DropdownMenuContent side="bottom" align="start" className="w-56">
             <DropdownMenuItem className="capitalize w-56">
-              <div className="flex items-center justify-center mr-2 relative overflow-hidden bg-[#616061] text-white font-semibold text-xl shrink-0 rounded-md size-9">
+              <div className="flex items-center justify-center mr-2 relative overflow-hidden bg-[#333] text-white font-semibold text-xl shrink-0 rounded-md size-9">
                 {workspace.name.charAt(0).toUpperCase()}
               </div>
               <div className="flex flex-col items-start overflow-hidden w-full">

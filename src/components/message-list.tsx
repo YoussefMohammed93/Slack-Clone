@@ -99,13 +99,14 @@ export const MessageList = ({
                   body={message?.body ?? ""}
                   image={message?.image}
                   memberId={message?.memberId}
-                  reactions={message?.reactions ?? []}
                   updatedAt={message?.updatedAt}
                   authorName={message?.user.name}
+                  threadName={message?.threadName}
                   authorImage={message?.user.image}
                   createdAt={message?._creationTime}
                   threadCount={message?.threadCount}
                   threadImage={message?.threadImage}
+                  reactions={message?.reactions ?? []}
                   threadTimestamp={message?.threadTimestamp}
                 />
               );

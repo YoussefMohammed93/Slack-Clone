@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Toolbar } from "./toolbar";
 import { Thumbnail } from "./thumbnail";
 import { Reactions } from "./reactions";
+import { ThreadBar } from "./thread-bar";
 import { usePanel } from "@/hooks/use-panel";
 import { useConfirm } from "@/hooks/use-confirm";
 import { format, isToday, isYesterday } from "date-fns";
@@ -24,6 +25,7 @@ interface MessageProps {
   authorName?: string;
   isCompact?: boolean;
   authorImage?: string;
+  threadName?: string;
   threadCount?: number;
   threadImage?: string;
   memberId: Id<"members"> | undefined;
@@ -49,7 +51,6 @@ const formatFullTime = (date: Date) => {
 export const Message = ({
   id,
   isAuthor,
-  // memberId,
   authorImage,
   authorName = "Member",
   reactions,
@@ -61,9 +62,10 @@ export const Message = ({
   isCompact,
   setEditingId,
   hideThreadButton,
-  // threadCount,
-  // threadImage,
-  // threadTimestamp,
+  threadCount,
+  threadImage,
+  threadTimestamp,
+  threadName,
 }: MessageProps) => {
   const { parentMessageId, onOpenMessage, onClose } = usePanel();
 
@@ -166,6 +168,13 @@ export const Message = ({
                   </span>
                 ) : null}
                 <Reactions data={reactions} onChange={handleReaction} />
+                <ThreadBar
+                  count={threadCount}
+                  image={threadImage}
+                  timeStamp={threadTimestamp}
+                  name={threadName}
+                  onClick={() => onOpenMessage(id)}
+                />
               </div>
             )}
           </div>
@@ -236,6 +245,13 @@ export const Message = ({
                 <span className="text-xs text-muted-foreground">(edited)</span>
               ) : null}
               <Reactions data={reactions} onChange={handleReaction} />
+              <ThreadBar
+                count={threadCount}
+                image={threadImage}
+                timeStamp={threadTimestamp}
+                name={threadName}
+                onClick={() => onOpenMessage(id)}
+              />
             </div>
           )}
         </div>

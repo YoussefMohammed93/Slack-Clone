@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -6,6 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus } from "lucide-react";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
@@ -33,7 +33,7 @@ export const WorkspaceSwitcher = () => {
       <DropdownMenuTrigger asChild>
         <Button className="relative overflow-hidden size-9 text-xl font-semibold bg-[#ABABAB] hover:bg-[#ABABAD]/80 text-black">
           {workspaceLoading ? (
-            <Loader2 className="size-5 animate-spin shrink-0 " />
+            <Loader2 className="size-5 animate-spin shrink-0" />
           ) : (
             workspace?.name.charAt(0).toUpperCase()
           )}
@@ -56,7 +56,7 @@ export const WorkspaceSwitcher = () => {
             className="overflow-hidden capitalize"
             onClick={() => router.push(`/workspace/${workspace._id}`)}
           >
-            <div className="flex items-center justify-center relative overflow-hidden shrink-0 size-9 mr-2 rounded-md text-lg font-semibold text-white bg-[#606060]">
+            <div className="flex items-center justify-center relative overflow-hidden shrink-0 size-9 mr-2 rounded-md text-lg font-semibold text-white bg-[#333]">
               {workspace.name.charAt(0).toUpperCase()}
             </div>
             <p className="truncate">{workspace.name}</p>

@@ -27,7 +27,6 @@ interface UsetItemProps {
 }
 
 export const UserItem = ({
-  // id,
   label = "Member",
   image,
   variant,

@@ -5,6 +5,7 @@ import { useChannelId } from "@/hooks/use-channel-id";
 import { WorkspaceSection } from "./workspace-section";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { AlertTriangle, HashIcon, Loader2 } from "lucide-react";
+import { UserButton } from "@/features/auth/components/user-button";
 import { useGetChannels } from "@/features/channels/use-get-channels";
 import { UseGetMembers } from "@/features/members/api/use-get-members";
 import { UseCurrentMember } from "@/features/members/api/use-current-member";
@@ -73,7 +74,7 @@ export const WorkspaceSidebar = () => {
       </WorkspaceSection>
       <WorkspaceSection
         label={`Members of ${workspace.name} workspace`}
-        hint="New direct message"
+        hint="."
       >
         {members?.map((item) => (
           <UserItem
@@ -84,6 +85,9 @@ export const WorkspaceSidebar = () => {
           />
         ))}
       </WorkspaceSection>
+      <div className="flex flex-col items-start justify-center gap-y-1 mt-auto p-4">
+        <UserButton />
+      </div>
     </div>
   );
 };
