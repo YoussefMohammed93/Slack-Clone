@@ -77,7 +77,7 @@ const Editor = ({
       theme: "snow",
       placeholder: placehloderRef.current,
       modules: {
-        toolbar: [["bold", "italic"], ["link"]],
+        toolbar: [["bold", "italic"]],
         keyboard: {
           bindings: {
             enter: {

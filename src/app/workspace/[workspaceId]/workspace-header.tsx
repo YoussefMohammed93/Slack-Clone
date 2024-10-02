@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,11 +5,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Hint } from "@/components/hint";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import { InviteModal } from "./invite-modal";
 import { PreferencesModal } from "./preferences-modal";
 import { Doc } from "../../../../convex/_generated/dataModel";
-import { ChevronDown, ListFilter, SquarePen } from "lucide-react";
+import { WorkspaceSwitcher } from "./workspace-switcher";
 
 interface WorkspaceHeaderProps {
   workspace: Doc<"workspaces">;
@@ -40,6 +40,7 @@ export const WorkspaceHeader = ({
         initialValue={workspace.name}
       />
       <div className="flex items-center justify-between px-4 h-[50px] gap-0.5">
+        <WorkspaceSwitcher />
         <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
           <DropdownMenuTrigger asChild>
             <Button
@@ -86,18 +87,6 @@ export const WorkspaceHeader = ({
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-        <div className="flex items-center gap-1">
-          <Hint label="Filter conversations" side="bottom">
-            <Button variant="transparent" size="iconSm">
-              <ListFilter className="size-5" />
-            </Button>
-          </Hint>
-          <Hint label="New message" side="bottom">
-            <Button variant="transparent" size="iconSm">
-              <SquarePen className="w-[18px] h-[18px]" />
-            </Button>
-          </Hint>
-        </div>
       </div>
     </>
   );

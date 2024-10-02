@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -29,36 +27,30 @@ interface UsetItemProps {
 }
 
 export const UserItem = ({
-  id,
+  // id,
   label = "Member",
   image,
   variant,
 }: UsetItemProps) => {
-  const workspaceId = useWorkspaceId();
   const avatarFallback = label.charAt(0).toUpperCase();
 
   return (
     <Button
       variant="transparent"
       size="sm"
-      asChild
       className={cn(userItemVariants({ variant: variant }))}
+      style={{ cursor: "default" }}
     >
-      <Link
-        href={`/workspace/${workspaceId}/member/${id}`}
-        className="relative"
-      >
-        <Avatar className="rounded-md">
-          <AvatarImage
-            className="size-6 mt-[7px] rounded-md object-cover"
-            src={image}
-          />
-          <AvatarFallback className="size-6 mt-[7px] rounded-md bg-sky-500 text-white text-xs">
-            {avatarFallback}
-          </AvatarFallback>
-        </Avatar>
-        <span className="absolute left-12 text-sm truncate">{label}</span>
-      </Link>
+      <Avatar className="rounded-md">
+        <AvatarImage
+          className="size-6 mt-[7px] rounded-md object-cover"
+          src={image}
+        />
+        <AvatarFallback className="size-6 mt-[7px] rounded-md bg-sky-500 text-white text-xs">
+          {avatarFallback}
+        </AvatarFallback>
+      </Avatar>
+      <span className="absolute left-14 text-sm truncate">{label}</span>
     </Button>
   );
 };

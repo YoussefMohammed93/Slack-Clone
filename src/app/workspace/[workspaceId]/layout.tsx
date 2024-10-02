@@ -5,7 +5,6 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { Sidebar } from "./sidebar";
 import { Toolbar } from "./toolbar";
 import { Loader2 } from "lucide-react";
 import { usePanel } from "@/hooks/use-panel";
@@ -26,7 +25,6 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
     <div className="h-full">
       <Toolbar />
       <div className="flex h-[calc(100vh-56px)]">
-        <Sidebar />
         <ResizablePanelGroup
           direction="horizontal"
           autoSaveId="ca-WorkspaceLayout"

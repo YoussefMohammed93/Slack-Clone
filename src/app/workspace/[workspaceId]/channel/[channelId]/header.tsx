@@ -94,7 +94,7 @@ export const Header = ({ title }: HeaderProps) => {
   };
 
   return (
-    <div className="h-[50px] flex items-center overflow-hidden px-3 border-b bg-white">
+    <div className="h-[60px] flex items-center overflow-hidden px-3 border-b bg-white">
       <ConfirmDialog />
       <Dialog>
         <DialogTrigger asChild>
