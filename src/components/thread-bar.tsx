@@ -34,10 +34,10 @@ export const ThreadBar = ({
         <span className="text-xs text-sky-700 font-bold hover:underline truncate">
           {count} {count > 1 ? "replies" : "reply"}
         </span>
-        <span className="text-xs text-muted-foreground hover:underline truncate block group-hover/thread-bar:hidden">
+        <span className="text-xs text-muted-foreground truncate block group-hover/thread-bar:hidden">
           Last reply {formatDistanceToNow(timeStamp, { addSuffix: true })}
         </span>
-        <span className="text-xs text-muted-foreground hover:underline truncate hidden group-hover/thread-bar:block">
+        <span className="text-xs text-muted-foreground truncate hidden group-hover/thread-bar:block">
           View thread
         </span>
       </div>

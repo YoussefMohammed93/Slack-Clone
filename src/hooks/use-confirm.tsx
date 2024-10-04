@@ -7,6 +7,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "@/components/ui/dialog";
 
 export const useConfirm = (
@@ -37,11 +38,15 @@ export const useConfirm = (
   };
 
   const ConfirmDialog = () => (
-    <Dialog open={promise !== null}>
+    <Dialog
+      open={promise !== null}
+      onOpenChange={(open) => !open && handleClose()}
+    >
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{message}</DialogDescription>
+          <DialogClose onClick={handleClose} />
         </DialogHeader>
         <DialogFooter className="pt-2">
           <Button variant="outline" onClick={handleCancel}>

@@ -51,6 +51,7 @@ const formatFullTime = (date: Date) => {
 export const Message = ({
   id,
   isAuthor,
+  memberId,
   authorImage,
   authorName = "Member",
   reactions,
@@ -67,7 +68,7 @@ export const Message = ({
   threadTimestamp,
   threadName,
 }: MessageProps) => {
-  const { parentMessageId, onOpenMessage, onClose } = usePanel();
+  const { parentMessageId, onOpenMessage, onOpenProfile, onClose } = usePanel();
 
   const [ConfirmDialog, confirm] = useConfirm(
     "Delete Message",
@@ -80,9 +81,10 @@ export const Message = ({
   const { mutate: removeMessage, isPending: isRemovingMessage } =
     UseRemoveMessage();
 
-  const { mutate: toggleReaction } = UseToggleReaction();
+  const { mutate: toggleReaction, isPending: isTogglingReaction } =
+    UseToggleReaction();
 
-  const isPending = isUpdatingMessage;
+  const isPending = isUpdatingMessage || isTogglingReaction;
 
   const handleReaction = (value: string) => {
     toggleReaction(
@@ -208,12 +210,13 @@ export const Message = ({
         )}
       >
         <div className="flex items-start gap-2">
-          <button>
+          <button onClick={() => memberId && onOpenProfile(memberId)}>
             <Avatar>
               <AvatarImage className="mt-1" src={authorImage} />
               <AvatarFallback>{avatarFallback}</AvatarFallback>
             </Avatar>
           </button>
+
           {isEditing ? (
             <div className="w-full h-full">
               <Editor
@@ -228,7 +231,7 @@ export const Message = ({
             <div className="w-full flex flex-col overflow-hidden">
               <div className="text-sm">
                 <button
-                  onClick={() => {}}
+                  onClick={() => memberId && onOpenProfile(memberId)}
                   className="text-primary hover:underline font-bold"
                 >
                   {authorName}
@@ -240,18 +243,23 @@ export const Message = ({
                   </button>
                 </Hint>
               </div>
-              <Renderer value={body} />
-              {updatedAt ? (
-                <span className="text-xs text-muted-foreground">(edited)</span>
-              ) : null}
-              <Reactions data={reactions} onChange={handleReaction} />
-              <ThreadBar
-                count={threadCount}
-                image={threadImage}
-                timeStamp={threadTimestamp}
-                name={threadName}
-                onClick={() => onOpenMessage(id)}
-              />
+              <div className="w-full flex flex-col">
+                <Renderer value={body} />
+                <Thumbnail url={image} />
+                {updatedAt ? (
+                  <span className="text-xs text-muted-foreground">
+                    (edited)
+                  </span>
+                ) : null}
+                <Reactions data={reactions} onChange={handleReaction} />
+                <ThreadBar
+                  count={threadCount}
+                  image={threadImage}
+                  timeStamp={threadTimestamp}
+                  name={threadName}
+                  onClick={() => onOpenMessage(id)}
+                />
+              </div>
             </div>
           )}
         </div>

@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Slack Clone By Youssef Mohammed",
+  title: "Slack Clone",
   description: "Slack clone by youssef mohammed",
 };
 

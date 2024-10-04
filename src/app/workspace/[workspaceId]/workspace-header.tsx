@@ -39,7 +39,7 @@ export const WorkspaceHeader = ({
         setOpen={setPreferencesOpen}
         initialValue={workspace.name}
       />
-      <div className="flex items-center justify-between px-4 h-[60px] gap-0.5 border-b border-gray-300">
+      <div className="flex items-center justify-between px-4 h-[60px] gap-0.5">
         <WorkspaceSwitcher />
         <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
           <DropdownMenuTrigger asChild>
