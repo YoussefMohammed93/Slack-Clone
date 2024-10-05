@@ -28,8 +28,6 @@ export const remove = mutation({
       throw new Error("Unauthorized");
     }
 
-    // TODO: Remove associated messages
-
     await ctx.db.delete(args.id);
 
     return args.id;

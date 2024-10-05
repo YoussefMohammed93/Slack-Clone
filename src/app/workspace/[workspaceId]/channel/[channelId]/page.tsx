@@ -20,7 +20,7 @@ const ChannelIdPage = () => {
   if (channelLoading || status === "LoadingFirstPage") {
     return (
       <div className="h-full flex flex-1 items-center justify-center">
-        <Loader2 className="size-5 animate-spin text-muted-foreground" />
+        <Loader2 className="size-6 animate-spin text-muted-foreground" />
       </div>
     );
   }
