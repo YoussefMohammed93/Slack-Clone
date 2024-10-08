@@ -13,6 +13,16 @@ const CustomPassword = Password<DataModel>({
   },
 });
 
+const GITHUB = GitHub({
+  clientId: process.env.GITHUB_CLIENT_ID || "",
+  clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
+  authorization: {
+    params: {
+      redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`,
+    },
+  },
+});
+
 export const { auth, signIn, signOut, store } = convexAuth({
-  providers: [GitHub, CustomPassword],
+  providers: [GITHUB, CustomPassword],
 });
